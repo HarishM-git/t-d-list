@@ -1,0 +1,30 @@
+body{
+  background-color: black;
+}
+h2{
+  color: aliceblue;
+  text-align: center;
+}
+.input1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  
+  
+}
+.input{
+  border-radius: 15px;
+  padding:15px;
+}
+.button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+button{
+  margin-left: 8px;
+  border-radius: 15px;
+  padding: 15px;
+}
