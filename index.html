@@ -7,35 +7,59 @@
   <link rel="stylesheet" href="css.css">
 </head>
 <body>
-  <h2 >To do list</h2>
+  <h2 >What should you do today?</h2>
   <div>
       <div class="input1">
-        <input class="input" placeholder="to do list" onkeydown="
-         if (event.key==='Enter'){
+          <input class="input" placeholder="to do list" onkeydown="
+          if (event.key==='Enter'){
+            to();
+            
+          }
+          
+          "> 
+          <input class="date" type="date">
+        
+          <button class="bu" onclick="
+          document.querySelector('.create').play();
           to();
-         }
-        
-        "> 
-      <div class="button"><button onclick="
-        to();
-        
-        
-        ">Add</button>
-        
-        
-      </div> 
+
+          
+          ">Add
+          </button>
+          <audio class="create" src="click-sound.wav"></audio>
+          <audio class="delete" src="reset-tone.wav"></audio>
       </div>
-      <div class="parag" style="color: aliceblue;text-align:center"></div>
+      <div class="parag"></div>
   </div>
   <script>
+   
     const tdl = [];
+  
+    
     function tap(){
+      
       let text_html='';
+
+      
       for(let i=0;i<tdl.length;i++){
         const value=tdl[i];
+        const {name,due}=value;
+         
+        const html=`
+        <p>${name}</p>
+        <p> ${due}</p>
+        <button class="button_js" onclick="
+        document.querySelector('.delete').play();
+
         
-        const html=`<p>${value}</p>`;
-        text_html+=html;
+          tdl.splice(${i},1);
+          tap();
+
+          ">delete
+        </button>`;
+        
+    
+          text_html+=html;
       }
       document.querySelector('.parag').innerHTML=text_html;
   }
@@ -44,14 +68,28 @@
 
     function to(){
 
-      let a=document.querySelector('.input').value;
-      tdl.push(a);
-      document.querySelector('.input').value='';
-      tap();
+      let name=document.querySelector('.input').value;
+      let due=document.querySelector('.date').value;
+      if (name===''){
+        alert('It seems you forgot to mention the Work?');
+      
+      }
+      else if(due===null){
+        alert('It seems you forgot to mention the date?')
+      }
+      else{
+        tdl.push({name,due});
+        document.querySelector('.input').value='';
+        document.querySelector('.date').value='';
+        localStorage.setItem('ltdl',JSON.stringify(tdl));
+        tap();
+      }
+       
+
       
      
 
-      }
+    }
       
     
     
