@@ -2,7 +2,7 @@
 
 let tdl=JSON.parse(localStorage.getItem('ltdl'))||[];
 
-document.querySelector('.parag').innerHTML=JSON.parse(localStorage.getItem('para'));
+document.querySelector('.parag').innerHTML=JSON.parse(localStorage.getItem('para'))||'hello';
 
   
     
@@ -25,6 +25,7 @@ function tap(){
     
       tdl.splice(${i},1);
       tap();
+      localStorage.setItem('para',JSON.stringify(text_html));
 
       ">delete
     </button>`;
@@ -32,8 +33,11 @@ function tap(){
 
       text_html+=html;
   }
+
   document.querySelector('.parag').innerHTML=text_html;
+  
   localStorage.setItem('para',JSON.stringify(text_html));
+
 }
 
 
@@ -41,14 +45,21 @@ function tap(){
 function to(){
 
   let name=document.querySelector('.input').value;
+
   let due=document.querySelector('.date').value;
+
   if (name===''){
+
     alert('It seems you forgot to mention the Work?');
   
   }
+
   else if(due===null){
-    alert('It seems you forgot to mention the date?')
+
+    alert('It seems you forgot to mention the date?');
+
   }
+
   else{
     tdl.push({name,due});
     document.querySelector('.input').value='';
