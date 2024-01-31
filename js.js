@@ -2,7 +2,7 @@
 
 let tdl=JSON.parse(localStorage.getItem('ltdl'))||[];
 
-document.querySelector('.parag').innerHTML=JSON.parse(localStorage.getItem('para'))||'hello';
+document.querySelector('.parag').innerHTML=JSON.parse(localStorage.getItem('para'));
 
   
     
