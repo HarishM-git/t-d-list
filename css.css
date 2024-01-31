@@ -24,7 +24,7 @@ h2{
   color: aliceblue;
   display: grid;
   grid-template-columns: 100px 100px 100px;
-  column-gap: 15px;
+  column-gap: 10px;
   row-gap: 15px;
   align-items: stretch;
   justify-content: center;
